@@ -1,0 +1,50 @@
+policy: 1.0.0
+
+info:
+  title: Create DateTime With MS
+  name: create-datetime-ms
+  version: 1.0.0
+  description: Create a ISO 8601 DateTime with milliseconds
+  contact:
+    name: Andrew Guthrie
+    url: https://github.com/ibm-datapower/
+    email: steve-product-manager@ibm.com
+
+attach:
+  - rest
+  - soap
+
+gateways:
+  - datapower-gateway
+
+properties:
+  $schema: "http://json-schema.org/draft-04/schema#"
+  type: object
+  properties:
+    enc:
+      label: "Encryption Algorithm"
+      description: "Select an encryption algorithm"
+      type: string
+      enum:
+       - A128CBC-HS256
+       - A192CBC-HS384
+       - A256CBC-HS512
+    alg:
+      label: "Key Encryption Algorithm"
+      description: "Select a key encryption algorithm"
+      type: string
+      enum:
+       - RSA1_5
+       - RSA-OAEP
+       - RSA-OAEP-256
+       - A128KW
+       - A192KW
+       - A256KW
+    crypto:
+      label: "Crypto Object"
+      description: "Select the crypto object used to encrypt the message"
+      type: string
+  required:
+    - enc
+    - alg
+    - crypto
